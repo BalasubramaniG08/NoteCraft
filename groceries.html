@@ -9,14 +9,13 @@
 </head>
 <body>
 <div class="container">
-  <h5 class="text-center text-primary mb-3">Grocery List</h5>
-  <div id="groceryList"></div>
+    <h5 class="text-center text-primary mb-3">Grocery List</h5>
+    <div id="groceryList"></div>
 
-  <!-- Buttons side by side -->
-  <div class="d-flex gap-2 mt-2">
-    <button id="clearGroceries" class="btn btn-danger flex-fill">Clear All Groceries</button>
-    <a href="index.html" class="btn btn-info flex-fill">Add More</a>
-  </div>
+    <div class="d-flex gap-2 mt-2">
+        <button id="clearGroceries" class="btn btn-danger flex-fill">Clear All Groceries</button>
+        <a href="index.html" class="btn btn-info flex-fill">Add More</a>
+    </div>
 </div>
 
 <script>
@@ -24,45 +23,47 @@ let groceries = JSON.parse(localStorage.getItem("groceries")) || [];
 const save = () => { localStorage.setItem("groceries", JSON.stringify(groceries)); }
 
 function renderGroceries(){
-  const list = document.getElementById("groceryList");
-  list.innerHTML = "";
-  if(groceries.length === 0){ 
-    list.innerHTML = "<p class='text-muted'>No groceries</p>"; 
-    return; 
-  }
-
-  groceries.forEach(g => {
-    const card = document.createElement("div");
-    card.className = "card-item";
-    card.innerHTML = `
-      <div class="d-flex justify-content-between align-items-start">
-        <strong>${g.name}</strong>
-        <button class="delete-btn">&times;</button>
-      </div>
-      <input type="text" class="form-control form-control-sm mt-1 remark" value="${g.remark}" placeholder="Remarks...">
-      <select class="form-select form-select-sm mt-1">
-        <option ${g.status==="Pending"?"selected":""}>Pending</option>
-        <option ${g.status==="Bought"?"selected":""}>Bought</option>
-      </select>
-    `;
-    
-    // Delete
-    card.querySelector(".delete-btn").onclick = () => { 
-      groceries = groceries.filter(x => x.id !== g.id); 
-      save(); 
-      renderGroceries(); 
+    const list = document.getElementById("groceryList");
+    list.innerHTML = "";
+    if(groceries.length === 0){
+        list.innerHTML = "<p class='text-muted'>No groceries</p>";
+        return;
     }
-    
-    // Edit
-    card.querySelector(".remark").oninput = e => { g.remark = e.target.value; save(); }
-    card.querySelector("select").onchange = e => { g.status = e.target.value; save(); }
 
-    list.appendChild(card);
-  });
+    groceries.forEach(g => {
+        const card = document.createElement("div");
+        card.className = "card-item";
+        card.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center">
+                <strong class="task-name">${g.name}</strong>
+                <button class="delete-btn">&times;</button>
+            </div>
+            <input type="text" class="form-control form-control-sm mt-1 remark" value="${g.remark}" placeholder="Remarks...">
+            <select class="form-select form-select-sm mt-1">
+                <option ${g.status==="Pending"?"selected":""}>Pending</option>
+                <option ${g.status==="Bought"?"selected":""}>Bought</option>
+            </select>
+        `;
+
+        card.querySelector(".delete-btn").onclick = () => {
+            groceries = groceries.filter(x => x.id !== g.id);
+            save();
+            renderGroceries();
+        }
+
+        card.querySelector(".remark").oninput = e => { g.remark = e.target.value; save(); }
+        card.querySelector("select").onchange = e => { g.status = e.target.value; save(); }
+
+        list.appendChild(card);
+    });
 }
 
-document.getElementById("clearGroceries").onclick = () => { 
-  if(confirm("Clear all groceries?")){ groceries = []; save(); renderGroceries(); } 
+document.getElementById("clearGroceries").onclick = () => {
+    if(confirm("Clear all groceries?")){
+        groceries = [];
+        save();
+        renderGroceries();
+    }
 }
 
 renderGroceries();

@@ -1,124 +1,108 @@
-/* =========================
-   BODY & CONTAINER
-============================ */
-body { 
-  background: #f8f9fa; 
-  font-family: 'Poppins', sans-serif; 
-  margin: 0;
-  padding: 0;
+body {
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.container { 
-  max-width: 500px; 
-  margin: 30px auto; 
-  background: #fff; 
-  padding: 20px; 
-  border-radius: 12px; 
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+.container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
 }
 
-/* =========================
-   HEADINGS
-============================ */
-h5 {
-  font-weight: 700;
-}
+h5 { font-weight: 700; }
 
-/* =========================
-   FORM ELEMENTS
-============================ */
-input, textarea, select { 
-  border-radius: 8px !important; 
-}
+input, textarea, select { border-radius: 8px !important; }
 
 /* =========================
    CARD ITEMS
 ============================ */
-.card-item { 
-  background: #f2f2f2; 
-  padding: 12px; 
-  border-radius: 10px; 
-  margin-bottom: 10px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-item {
+    background: #f2f2f2;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* =========================
-   DELETE BUTTON
+   CARD HEADER (Name + Delete)
 ============================ */
-.delete-btn { 
-  border: none; 
-  background: none; 
-  color: red; 
-  font-size: 18px; 
-  line-height: 1; 
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.delete-btn:hover {
-  transform: scale(1.3) rotate(-10deg);
-}
-
-/* =========================
-   ALERTS
-============================ */
-.alert-success { 
-  padding: 5px 10px; 
-  font-size: 0.9rem; 
-  margin-top: 5px; 
-  border-radius: 6px;
-}
-
-/* =========================
-   BUTTONS
-============================ */
-.btn-1, .btn-2 {
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 8px;
-}
-
-.btn + .btn { 
-  margin-left: 5px; 
-}
-
-@media(max-width: 576px){
-  .btn-1, .btn-2{
-    font-size: 14px;
-    padding: 6px 8px;
-  }
-}
-
-/* Align the name with input boxes */
 .card-item > .d-flex:first-child {
-  padding: 6px 10px; /* same as input padding */
-  margin-bottom: 5px;
-  background: #e9ecef; /* light background to match input feel */
-  border-radius: 6px;
+    padding: 6px 12px;
+    margin-bottom: 5px;
+    background: #e9ecef;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-/* Delete button styling */
+.card-item .task-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    word-break: break-word;
+    margin-bottom: 0;
+}
+
 .card-item .delete-btn {
-  background: red;       /* red background for visibility */
-  color: #fff;           /* white x mark */
-  border-radius: 50%;    /* round button */
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+    background: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
 }
 
 .card-item .delete-btn:hover {
-  transform: scale(1.3) rotate(-10deg);
+    transform: scale(1.3) rotate(-10deg);
+}
+
+/* Alerts */
+.alert-success {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    border-radius: 6px;
+}
+
+/* Buttons */
+.btn-1, .btn-2 {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+@media(max-width: 576px){
+    .card-item > .d-flex:first-child {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card-item .delete-btn { margin-top: 5px; }
+    .btn-1, .btn-2 { font-size: 14px; padding: 6px 8px; }
+}
+
+h6{
+  font-size:18px;
+  font-weight: 600;
+  margin-left: 3px;
+  margin-bottom: 15px;
 }
