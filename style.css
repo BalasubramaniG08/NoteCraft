@@ -119,4 +119,5 @@ input, textarea, select {
 @media(max-width: 576px){
     .container { max-width: 90% !important; } /* full width on mobile */
     .btn-1, .btn-2 { font-size: 14px; padding: 6px 8px; }
+    h6{font-size: 20px;}
 }
