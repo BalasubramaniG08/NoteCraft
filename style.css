@@ -1,0 +1,48 @@
+/* Common body and container styling */
+body { 
+  background: #f8f9fa; 
+  font-family: Poppins, sans-serif; 
+}
+
+.container { 
+  max-width: 500px; 
+  margin: 30px auto; 
+  background: #fff; 
+  padding: 20px; 
+  border-radius: 12px; 
+}
+
+/* Form inputs, textarea, and select styling */
+input, textarea, select { 
+  border-radius: 8px !important; 
+}
+
+/* Card item styling */
+.card-item { 
+  background: #f2f2f2; 
+  padding: 10px; 
+  border-radius: 10px; 
+  margin-bottom: 10px; 
+}
+
+/* Delete button */
+.delete-btn { 
+  border: none; 
+  background: none; 
+  color: red; 
+  font-size: 18px; 
+  line-height: 1; 
+  cursor: pointer;
+}
+
+/* Alert styling */
+.alert-success { 
+  padding: 5px 10px; 
+  font-size: 0.9rem; 
+  margin-top: 5px; 
+}
+
+/* Buttons spacing */
+.btn + .btn { 
+  margin-left: 5px; 
+}
